@@ -1,0 +1,56 @@
+{% extends 'base_main.html' %}
+{% block body_art_midd %}
+    <div class="tuijian">
+      <h2>站长推荐</h2>
+      <ul>
+        {% for article in articles %}
+                <li>
+                    <a href="">
+                        {{ article.title }}
+                    </a>
+                </li>
+            {% endfor %}
+      </ul>
+    </div>
+
+    <div class="cloud">
+      <h2>标签云</h2>
+      <ul>
+        <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
+      </ul>
+    </div>
+    <div class="guanzhu">
+      <h2>关注我 么么哒</h2>
+      <ul>
+        <img src="/static/image/wx.jpg">
+      </ul>
+    </div>
+{% endblock %}
+
+{% block body_art_footer %}
+    <main class="r_box">
+
+        {% for article in articles %}
+                <li><i><a href="{% url 'mainPage:look' article.id %}"><img src="/static/image/3.jpg"></a></i>
+                <h3><a href="{% url 'mainPage:look' article.id %}">{{ article.title }}</a></h3>
+                <p>{{ article.content | safe }}</p>
+                </li>
+        {% endfor %}
+
+
+
+    <div class="pagelist">
+        当前第{{ articles.number }}页，共{{ articles.paginator.num_pages }}页
+        {% if articles.has_previous %}
+            <a href="{% url 'mainPage:list' %}?page={{ articles.previous_page_number }}">上一页</a>
+        {% endif %}
+        {% for i in articles.paginator.page_range %}
+            <a href="{% url 'mainPage:list' %}?page={{ i }}">{{ i }}</a>
+        {% endfor %}
+        {% if articles.has_next %}
+            <a href="{% url 'mainPage:list' %}?page={{ articles.next_page_number }}">下一页</a>
+        {% endif %}
+    </div>
+
+    </main>
+{% endblock %}

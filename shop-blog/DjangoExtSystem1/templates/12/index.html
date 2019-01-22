@@ -1,0 +1,17 @@
+
+{% extends 'base_main.html' %}
+
+{% block title %}
+    异清轩博客管理系统
+{% endblock %}
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+{% endblock %}
+
+
+
+{% block content %}
+    <p>我是首页，我需要登录后才能访问</p>
+    <p><a href="{% url 'users:logout' %}">注销</a></p>
+{% endblock %}

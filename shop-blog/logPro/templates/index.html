@@ -1,0 +1,43 @@
+{% extends 'base_main.html' %}
+{% block body_art_midd %}
+    {{ block.super }}
+    <div class="tuijian">
+        <h2>站长推荐</h2>
+        <ul>
+
+            {% for article in articles %}
+                <li>
+                    <a href="{% url 'mainPage:look' article.id %}">
+                        {{ article.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="links">
+        <h2>友情链接</h2>
+        <ul>
+          <a href="http://www.yangqq.com">我的博客</a>
+        </ul>
+    </div>
+    <div class="guanzhu">
+        <h2>关注我</h2>
+        <ul>
+          <img src="/static/image/wx.jpg">
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body_art_footer %}
+    {{ block.super }}
+    <main class="r_box">
+    {% for article in articles %}
+        <li><i><a href=""><img src=/static/image/1.jpg></a></i>
+            <h3><a href="{% url 'mainPage:look' article.id %}">{{ article.title }}</a></h3>
+            <p>{{ article.content | safe }}</p>
+        </li>
+    {% endfor %}
+
+  </main>
+{% endblock %}

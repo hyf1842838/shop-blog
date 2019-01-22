@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    文章编辑页面
+{% endblock %}
+
+{% block js %}
+    {% load static %}
+    <script type="text/javascript" src="{% static 'kindeditor/kindeditor-all.js' %}"></script>
+    <script type="text/javascript" src="{% static 'kindeditor/lang/zh-CN.js' %}"></script>
+    <script type="text/javascript">
+        KindEditor.ready(function(K) {
+                window.editor = K.create('#editor_id',{
+                    uploadJson:'/util/upload/kindeditor'
+                });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ msg }}
+        标题：<input type="text" name="title">
+        内容：<textarea id="editor_id" name="content"></textarea>
+        <p><input type="submit" value="提交"></p>
+    </form>
+{% endblock %}

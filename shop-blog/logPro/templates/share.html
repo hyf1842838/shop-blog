@@ -1,0 +1,74 @@
+{% extends 'base_main.html' %}
+
+{#{% block content %}#}
+    {{ block.super }}
+    {% block body_art %}
+        <div class="picbox">
+            <ul>
+              <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/1.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+               <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/2.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+            </ul>
+            <ul>
+                <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/3.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+                  <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/5.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+            </ul>
+            <ul>
+                  <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/7.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+                  <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/8.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+            </ul>
+            <ul>
+               <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/4.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+                  <li data-scroll-reveal="enter bottom over 1s" ><a href="/"><i><img src="/static/image/6.jpg"></i>
+                <div class="picinfo">
+                  <h3>个人博客模板《simple》</h3>
+                  <span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。</span> </div>
+                </a></li>
+            </ul>
+        </div>
+
+    <div class="pagelist">
+        当前第{{ art.number }}页，共{{ art.paginator.num_pages }}页
+        {% if art.has_previous %}
+            <a href="{% url 'mainPage:share' %}?page={{ art.previous_page_number }}">上一页</a>
+        {% endif %}
+        {% for i in art.paginator.page_range %}
+            <a href="{% url 'mainPage:share' %}?page={{ i }}">{{ i }}</a>
+        {% endfor %}
+        {% if art.has_next %}
+            <a href="{% url 'mainPage:share' %}?page={{ art.next_page_number }}">下一页</a>
+        {% endif %}
+    </div>
+    {% endblock %}
+
+
+
+
+
